@@ -26,3 +26,11 @@ function destroyer(arr) {
 }
 
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3).length === 2);
+
+// Wherefore art thou
+
+function whatIsInAName(collection, source) {
+  return collection.filter(elm => Object.entries(source).every(([key, val]) => elm[key] === val));
+}
+
+console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }).length === 1);
