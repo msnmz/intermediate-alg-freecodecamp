@@ -133,3 +133,19 @@ function uniteUnique(arr) {
 }
 
 console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]).length === 5);
+
+// Convert HTML Entities
+
+function convertHTML(str) {
+  const pairs = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&apos;'
+  };
+
+  return str.split('').map(ch => pairs[ch] ? pairs[ch] : ch).join('');
+}
+
+console.log(convertHTML("Dolce & Gabbana") === 'Dolce &amp; Gabbana');
