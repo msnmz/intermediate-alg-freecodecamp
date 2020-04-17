@@ -109,3 +109,14 @@ function pairElement(str) {
 }
 
 console.log(pairElement("GCG").length === 3);
+
+// Missing letters
+
+function fearNotLetter(str) {
+  for (let i = 0; i < str.length; ++i) {
+    if (str[i + 1] === undefined) return undefined;
+    if (str.charCodeAt(i + 1) - str.charCodeAt(i) > 1) return String.fromCharCode(str.charCodeAt(i) + 1);
+  }
+}
+
+console.log(fearNotLetter("abce") === 'd');
