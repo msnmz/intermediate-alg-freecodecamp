@@ -120,3 +120,16 @@ function fearNotLetter(str) {
 }
 
 console.log(fearNotLetter("abce") === 'd');
+
+// Sorted Union
+
+function uniteUnique(arr) {
+  return [...arguments].reduce((acc, currArr) => {
+    currArr.forEach(elm => {
+      if (!acc.includes(elm)) acc.push(elm);
+    })
+    return acc;
+  }, []);
+}
+
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]).length === 5);
