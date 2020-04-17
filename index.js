@@ -65,3 +65,18 @@ function spinalCase(str) {
 }
 
 console.log(spinalCase('This Is Spinal Tap') === 'this-is-spinal-tap');
+
+// Pig Latin
+
+function translatePigLatin(str) {
+  const vowels = ['a', 'e', 'u', 'i', 'o'];
+  let consonants = 0;
+  for (let i = 0; i < str.length; ++i) {
+    if (!vowels.includes(str[i])) ++consonants;
+    else break;
+  }
+  str = consonants > 0 ? `${str.substring(consonants)}${str.substring(0, consonants)}ay` : `${str}way`;
+  return str;
+}
+
+console.log(translatePigLatin("consonant") === 'aliforniacay');
