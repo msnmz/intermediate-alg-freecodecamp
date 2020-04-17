@@ -80,3 +80,18 @@ function translatePigLatin(str) {
 }
 
 console.log(translatePigLatin("consonant") === 'aliforniacay');
+
+// Search and Replace
+
+function myReplace(str, before, after) {
+  const matchCase = (first, second) => {
+    if (first[0] >= 'A' && first[0] <= 'Z') {
+      return second[0].toUpperCase() + second.substring(1);
+    }
+    return second;
+  }
+  const index = str.indexOf(before);
+  return str.substring(0, index) + matchCase(before, after) + str.substring(index + before.length, str.length);
+}
+
+console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped") === 'A quick brown fox leaped over the lazy dog');
