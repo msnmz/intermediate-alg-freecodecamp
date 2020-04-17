@@ -95,3 +95,17 @@ function myReplace(str, before, after) {
 }
 
 console.log(myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped") === 'A quick brown fox leaped over the lazy dog');
+
+// DNA Pairing
+
+function pairElement(str) {
+  const pairs = {
+    'A': 'T',
+    'T': 'A',
+    'C': 'G',
+    'G': 'C'
+  };
+  return str.split('').map(ch => [ch, pairs[ch]]);
+}
+
+console.log(pairElement("GCG").length === 3);
