@@ -149,3 +149,24 @@ function convertHTML(str) {
 }
 
 console.log(convertHTML("Dolce & Gabbana") === 'Dolce &amp; Gabbana');
+
+// Sum All Odd Fibonacci Numbers
+
+function sumFibs(num) {
+  if (num === 1 || num === 2) return 2;
+
+  let prev = 2;
+  let prevPrev = 1;
+
+  let totalOds = 2; // 1 + 1
+
+  for (let i = 2; i <= num; i = prev + prevPrev) {
+    const temp = prev;
+    prev = prevPrev + prev;
+    prevPrev = temp;
+    if (prev % 2 !== 0) totalOds += prev;
+  }
+  return totalOds;
+}
+
+console.log(sumFibs(4) === 5);
