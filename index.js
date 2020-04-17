@@ -34,3 +34,34 @@ function whatIsInAName(collection, source) {
 }
 
 console.log(whatIsInAName([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" }).length === 1);
+
+// Spinal Tap Case
+
+function spinalCase(str) {
+  const isLower = ch => ch >= "a" && ch <= "z";
+  const isUpper = ch => ch >= "A" && ch <= "Z";
+  let words = [];
+  let word = '';
+  str.split('').forEach(ch => {
+    if (isLower(ch)) {
+      word += ch;
+    } else if (isUpper(ch)) {
+      if (word.length === 0) {
+        word += ch.toLowerCase();
+      } else {
+        // got new word
+        words.push(word);
+        word = ch.toLowerCase();
+      }
+    } else {
+      // got new word
+      words.push(word);
+      word = ''
+    }
+  });
+  words.push(word);
+  console.log({ result: words.join('-') })
+  return words.join('-');
+}
+
+console.log(spinalCase('This Is Spinal Tap') === 'this-is-spinal-tap');
