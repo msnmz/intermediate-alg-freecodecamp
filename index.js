@@ -228,3 +228,14 @@ function smallestCommons(arr) {
 }
 
 console.log(smallestCommons([1, 5]) === 60);
+
+// Drop it
+
+function dropElements(arr, func) {
+  const first = arr.find(func);
+  if (!first) return [];
+
+  return arr.slice(arr.indexOf(first));
+}
+
+console.log(dropElements([1, 2, 3], function (n) { return n < 3; }).length === 3);
