@@ -187,3 +187,44 @@ function sumPrimes(num) {
 }
 
 console.log(sumPrimes(10) === 17);
+
+// Smallest Common Multiple
+
+function smallestCommons(arr) {
+  const isPrime = n => {
+    for (let i = 2, s = Math.sqrt(n); i <= s; i++)
+      if (n % i === 0) return false;
+    return n > 1;
+  }
+  const findPower = (n, prime) => {
+    let power = 0;
+    while (n % prime === 0) {
+      n /= prime;
+      power++;
+    }
+    return power;
+  }
+  const min = Math.min(...arr);
+  const max = Math.max(...arr);
+  const primeDividers = {};
+  for (let i = min; i <= max; ++i) {
+    if (isPrime(i)) {
+      primeDividers[i] = primeDividers[i] ? primeDividers[i] + 1 : 1;
+    } else {
+      const currDividers = {};
+      for (let k = 2, half = i / 2; k <= half; ++k) {
+        if (i % k === 0 && isPrime(k)) {
+          currDividers[k] = findPower(i, k);
+        }
+      }
+      Object.entries(currDividers).forEach(([prime, amount]) => {
+        if (!primeDividers[prime] || amount > primeDividers[prime]) {
+          primeDividers[prime] = amount;
+        }
+      });
+    }
+  }
+  return Object.entries(primeDividers).reduce((acc, [prime, amount]) => acc * Math.pow(prime, amount), 1);
+}
+
+console.log(smallestCommons([1, 5]) === 60);
