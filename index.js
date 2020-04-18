@@ -239,3 +239,18 @@ function dropElements(arr, func) {
 }
 
 console.log(dropElements([1, 2, 3], function (n) { return n < 3; }).length === 3);
+
+// Steamroller
+
+function steamrollArray(arr) {
+  const fArr = (elm, fResult = []) => {
+    if (!Array.isArray(elm)) fResult.push(elm);
+    else elm.forEach(el => fArr(el, fResult));
+  }
+
+  const res = [];
+  fArr(arr, res);
+  return res;
+}
+
+console.log(steamrollArray([1, [2], [3, [[4]]]]).length === 4);
