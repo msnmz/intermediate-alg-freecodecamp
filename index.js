@@ -291,3 +291,31 @@ function addTogether(num1, num2) {
 }
 
 console.log(addTogether(2, 3) === 5);
+
+// Make a Person
+
+var Person = function (firstAndLast) {
+  // Complete the method below and implement the others similarly
+  let fullname = firstAndLast.split(' ');
+  this.getFirstName = function () {
+    return fullname[0];
+  }
+  this.getLastName = function () {
+    return fullname[1];
+  }
+  this.getFullName = function () {
+    return fullname.join(' ');
+  }
+  this.setFirstName = function (first) {
+    fullname[0] = first;
+  }
+  this.setLastName = function (last) {
+    fullname[1] = last;
+  }
+  this.setFullName = function (firstAndLast) {
+    fullname = firstAndLast.split(' ');
+  }
+};
+
+var bob = new Person('Bob Ross');
+console.log(bob.getFullName() === 'Bob Ross');
