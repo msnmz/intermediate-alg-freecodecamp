@@ -271,3 +271,23 @@ function truthCheck(collection, pre) {
 
 console.log(truthCheck([{ "user": "Tinky-Winky", "sex": "male" }, { "user": "Dipsy", "sex": "male" }, { "user": "Laa-Laa", "sex": "female" }, { "user": "Po", "sex": "female" }], "sex") === true);
 
+// Arguments Optional
+
+function addTogether(num1, num2) {
+  if (!num1 && !num2) return;
+
+  const isValidNumber = num => typeof num === 'number'
+
+  if ((num1 && !isValidNumber(num1)) || (num2 && !isValidNumber(num2))) return;
+
+  if (num1 && num2) {
+    return num1 + num2;
+  } else if (num1) {
+    return num => {
+      if (!isValidNumber(num)) return;
+      return num + num1
+    };
+  }
+}
+
+console.log(addTogether(2, 3) === 5);
