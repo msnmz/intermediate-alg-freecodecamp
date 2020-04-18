@@ -16,7 +16,7 @@ function diffArray(arr1, arr2) {
   return [...arr1.filter(elm => !arr2.includes(elm)), ...arr2.filter(elm => !arr1.includes(elm))];
 }
 
-console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]).length === 5);
+console.log(diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5])[0] === 4);
 
 // Seek and Destroy
 
@@ -60,7 +60,6 @@ function spinalCase(str) {
     }
   });
   words.push(word);
-  console.log({ result: words.join('-') })
   return words.join('-');
 }
 
@@ -79,7 +78,7 @@ function translatePigLatin(str) {
   return str;
 }
 
-console.log(translatePigLatin("consonant") === 'aliforniacay');
+console.log(translatePigLatin("consonant") === 'onsonantcay');
 
 // Search and Replace
 
