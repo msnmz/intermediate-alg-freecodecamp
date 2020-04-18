@@ -319,3 +319,26 @@ var Person = function (firstAndLast) {
 
 var bob = new Person('Bob Ross');
 console.log(bob.getFullName() === 'Bob Ross');
+
+// Map the Debris
+
+function orbitalPeriod(arr) {
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+
+  // Formula for: Small body orbiting a central body
+  // T = 2π(√aˆ3/μ)
+  // a: the orbit's semi-major axis => earthRadius + avgAlt
+  // μ: GM
+  const calculateOrbitalPeriod = orbitingBody => {
+    const { name, avgAlt } = orbitingBody;
+    const semiMajorAxis = earthRadius + avgAlt;
+    const calculatedRoot = Math.sqrt(Math.pow(semiMajorAxis, 3) / GM);
+    const orbitalPeriod = Math.round(2 * Math.PI * calculatedRoot);
+    return { name, orbitalPeriod };
+  }
+
+  return arr.map(calculateOrbitalPeriod);
+}
+
+orbitalPeriod([{ name: "sputnik", avgAlt: 35873.5553 }]);
